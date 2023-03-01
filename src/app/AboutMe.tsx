@@ -43,11 +43,10 @@ const SkillsCard = styled.div`
 			order: 1;
 			&.active {
 				/* add initial min-height for smooth transition */
-				height: 60vh!important;
+				height: 60vh !important;
 				width: 100vh;
 			}
 		}
-
 	}
 	@media (min-width: 1024px) {
 		transition: width 0.7s;
@@ -55,7 +54,7 @@ const SkillsCard = styled.div`
 			max-height: 475px;
 			&.active {
 				/* add initial min-height for smooth transition */
-				height: 52vh!important;
+				height: 52vh !important;
 				width: 100vh;
 			}
 		}
@@ -184,7 +183,7 @@ const WhoWrapper = styled.div`
 	transition: opacity 0.2s;
 	max-width: 550px;
 	@media (min-width: 768px) {
-		max-width: 95% ;
+		max-width: 95%;
 	}
 `;
 
@@ -234,8 +233,8 @@ const SkillCard = ({
 								</WhoP>
 								<br />
 								<WhoP>
-									I enjoy making games as a hobby, either web games or desktop by using
-									the Unity Engine (C#, Blender).<br></br>
+									I enjoy making games as a hobby, either web games or desktop
+									by using the Unity Engine (C#, Blender).<br></br>
 									<br></br>
 									<Span>
 										P.S. You may also visit my Playground page if you feel like
@@ -243,7 +242,7 @@ const SkillCard = ({
 									</Span>
 								</WhoP>
 							</>
-						) : (
+						) : !isWhoCardDelayDone && (
 							<ul>
 								{whoArr?.map((point: string) => (
 									<WhoLI key={point}>{point}</WhoLI>
@@ -255,7 +254,8 @@ const SkillCard = ({
 			)}
 		</CardWrapper>
 		{!(isSkillCard && skillsArr) && (
-			<Button disabled={textOpacity == '0' ? true : false}
+			<Button
+				disabled={textOpacity == '0' ? true : false}
 				onClick={() => {
 					setIsWhoCardOpen(!isWhoCardOpen);
 					setTimeout(() => {
@@ -263,7 +263,7 @@ const SkillCard = ({
 					}, 500);
 				}}
 			>
-				{textOpacity}
+				{isWhoCardOpen ? "See Less" : "See More"}
 			</Button>
 		)}
 	</SkillsCard>
@@ -291,11 +291,8 @@ export default function Aboutme() {
 	const [isWhoCardDelayDone, setIsWhoCardDelayDone] = useState(false);
 	const [textOpacity, setTextOpacity] = useState('1');
 	useEffect(() => {
-		if (isWhoCardOpen) {
 			setTextOpacity('0');
-		} else {
-			setTextOpacity('1');
-		}
+
 		setTimeout(() => {
 			setTextOpacity('1');
 		}, 500);
