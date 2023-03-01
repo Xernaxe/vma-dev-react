@@ -119,6 +119,10 @@ export const SectionHeader = styled.h3`
 	font-weight: 400;
 	text-align: center;
 
+	@media (min-width: 1440px){
+		font-size: 1.8rem;
+	}
+
 `;
 
 const Section = styled.section``;
