@@ -16,3 +16,58 @@ a {
 body {
 	background: #060606;
 }
+
+main{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+section {
+	margin: 10vh 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	
+}
+
+
+.active{
+	width: 100vw!important;
+}
+
+@media (min-width: 375px){
+	section{
+		width: 80%;
+	}
+}
+@media (min-width: 768px) {
+	section{
+		width: 80%;
+	}
+}
+@media (min-width: 1024px) {
+	section{
+		width: 70%;
+		margin: 15vh 0;
+	}
+}
+@media (min-width: 1440px) {
+	section{
+		width: 60%;
+	}
+}
+@media (min-width: 1441px) {
+	section{
+		width: 864px;
+	}
+}
+
+
+@media (min-width: 771px){
+
+	.active{
+		width: 83vw!important;
+	}	
+}

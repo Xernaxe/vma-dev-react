@@ -2,9 +2,11 @@
 
 import Link from 'next/link';
 import styled from 'styled-components';
+import CardLine from './CardLine';
+import cardline from './CardLine';
 
 const Project = styled.div`
-	width: 70vw;
+	width: 100%;
 	height: fit-content;
 	padding: 10px 0;
 	border-radius: 0 0 5px 5px;
@@ -13,22 +15,19 @@ const Project = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	position: relative;
-	
-	
+
 	@media (min-width: 768px) {
-		width: 40vw;
-		height: 27vh;
-		max-height: 230px;
-	}
-	
-	@media (min-width: 1024px){
-		width: 35vw;
-		max-width: 350px;
-		flex: 1 1 50%;
+		width: 48%;
+		height: 30vh;
 	}
 
-	@media (max-width: 375px) {
-		width: 85vw;
+	@media (min-width: 1024px) {
+		max-width: 48.6%;
+    flex: 1 1 50%;
+	}
+	@media (min-width: 1440px){
+		height: 26vh;
+		max-height: 227px;
 	}
 
 `;
@@ -37,23 +36,17 @@ const ProjectsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 20px;
+	gap: 40px;
 	margin: 20px 0;
 
-	@media (min-width: 768px){
+	@media (min-width: 768px) {
 		flex-direction: row;
 		flex-wrap: wrap;
+		gap: 20px;
 		justify-content: center;
 	}
 `;
 
-const ProjectLine = styled.div`
-	width: 100%;
-	height: 2px;
-	top: 0;
-	position: absolute;
-
-`;
 
 const ProjectTitle = styled.p`
 	text-align: center;
@@ -71,6 +64,11 @@ const UL = styled.ul`
 	margin: 10px;
 	flex-wrap: wrap;
 	justify-content: center;
+
+	//768+ : width: 75%
+	@media (min-width: 768px) {
+		width: 76%;
+	}
 `;
 
 const LI = styled.li`
@@ -79,6 +77,15 @@ const LI = styled.li`
 	border: 1px solid;
 	border-radius: 10px;
 	font-size: 15px;
+`;
+
+const StyledLink = styled(Link)`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
 `;
 const projectsArr = [
 	{
@@ -107,37 +114,41 @@ const projectsArr = [
 	},
 ];
 
-const SectionHeader = styled.h3`
-	width: 70vw;
+export const SectionHeader = styled.h3`
+	font-size: 1.3rem;
+	font-weight: 400;
 	text-align: center;
-	margin: auto;
-`
 
-const Section = styled.section`
-	
-`
+`;
+
+const Section = styled.section``;
 export default function Projects() {
 	return (
 		<Section>
-			<SectionHeader>Let me show you on what i've been working lately...</SectionHeader>
+			<SectionHeader>
+				Let me show you on what I've been working lately...
+			</SectionHeader>
 			<ProjectsWrapper>
 				{projectsArr.map((project) => (
-					<Link href={`/${project.name.replaceAll(` `, ``)}`} key={project.name}>
 					<Project>
-						<ProjectLine style={{ background: project.color }}></ProjectLine>
-						<ProjectTitle style={{ color: project.color }}>
-							{project.name.toUpperCase()}
-						</ProjectTitle>
-						<ProjectDesc>{project.desc}</ProjectDesc>
-						<UL>
-							{project.stack.map((tech) => (
-								<LI key={tech} style={{ color: project.color }}>
-									{tech}
-								</LI>
-							))}
-						</UL>
+						<StyledLink
+							href={`/${project.name.replaceAll(` `, ``)}`}
+							key={project.name}
+						>
+							<CardLine lineColor={project.color}></CardLine>
+							<ProjectTitle style={{ color: project.color }}>
+								{project.name.toUpperCase()}
+							</ProjectTitle>
+							<ProjectDesc>{project.desc}</ProjectDesc>
+							<UL>
+								{project.stack.map((tech) => (
+									<LI key={tech} style={{ color: project.color }}>
+										{tech}
+									</LI>
+								))}
+							</UL>
+						</StyledLink>
 					</Project>
-				</Link>
 				))}
 			</ProjectsWrapper>
 		</Section>
