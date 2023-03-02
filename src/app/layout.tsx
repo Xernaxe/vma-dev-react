@@ -1,5 +1,6 @@
 import './globals.css';
 import Navbar from './NavBar';
+import StyledComponentsRegistry from 'lib/registry';
 
 export default function RootLayout({
 	children,
@@ -10,11 +11,13 @@ export default function RootLayout({
 		<html lang='en'>
 			<head />
 			<body>
-				<Navbar />
+				<StyledComponentsRegistry>
+					<Navbar />
 
-				<main>{children}</main>
+					<main>{children}</main>
 
-				<footer></footer>
+					<footer></footer>
+				</StyledComponentsRegistry>
 			</body>
 		</html>
 	);
