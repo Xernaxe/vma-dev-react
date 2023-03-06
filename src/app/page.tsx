@@ -1,5 +1,5 @@
 import Hero from './Hero';
-import Projects from './projects';
+import Projects from './Projects';
 import Aboutme from './AboutMe';
 import Contact from './Contact';
 

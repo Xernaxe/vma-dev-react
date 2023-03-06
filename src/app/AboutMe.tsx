@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { SectionHeader } from './projects';
+import { SectionHeader } from './Projects';
 import CardLine from './CardLine';
 import { text } from 'stream/consumers';
 
@@ -61,7 +61,7 @@ const SkillsCard = styled.div`
 	}
 `;
 
-const CardTitle = styled.p`
+export const CardTitle = styled.p`
 	font-size: 1.8rem;
 	margin-top: 1rem;
 	text-align: center;

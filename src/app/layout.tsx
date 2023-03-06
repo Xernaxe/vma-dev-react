@@ -12,11 +12,13 @@ export default function RootLayout({
 			<head />
 			<body>
 				<StyledComponentsRegistry>
-					<Navbar />
+					<>
+						<Navbar />
 
-					<main>{children}</main>
+						<main>{children}</main>
 
-					<footer></footer>
+						<footer></footer>
+					</>
 				</StyledComponentsRegistry>
 			</body>
 		</html>
